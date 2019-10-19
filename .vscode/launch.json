@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "runserver",
+            "type": "python",
+            "request": "attach",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/src/"
+                }
+            ],
+            "port": 3002,
+            "host": "localhost",
+        }
+    ]
+}
