@@ -9,6 +9,7 @@ from vinted_backend.models import Users, SmartlyAPI
 
 from datetime import datetime
 from collections import Counter 
+import numpy as np
 
 
 class UserGenderView(generics.ListAPIView):
@@ -36,7 +37,11 @@ class UserAgeView(generics.ListAPIView):
         M = [x.get('age_at_registration') for x in ages if x.get('gender')=="M"]
         F = [x.get('age_at_registration') for x in ages if x.get('gender')=="F"] 
         
-        ages = (('all', all_genders), ('M', M), ('F', F))
+        ages = (
+            ('all', np.histogram(all_genders, 15)),
+            ('M', np.histogram(M, 15)), 
+            ('F',  np.histogram(F, 15))
+            )
 
         return ages
 
