@@ -53,7 +53,8 @@ class Base(Configuration):
         'localhost:3000',
         '127.0.0.1:3000',
         'localhost:2999',
-        'ec2-13-58-224-148.us-east-2.compute.amazonaws.com:3000'
+        'ec2-13-58-224-148.us-east-2.compute.amazonaws.com:3000',
+        'ec2-13-58-224-148.us-east-2.compute.amazonaws.com:8888'
     ]
 
     ROOT_URLCONF = 'vinted_backend.urls'
