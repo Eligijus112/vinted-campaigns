@@ -17,7 +17,8 @@ class Base(Configuration):
         'localhost', 
         '127.0.0.1', 
         'ec2-13-58-224-148.us-east-2.compute.amazonaws.com',
-        '18.191.61.174'
+        '18.191.61.174',
+        'ec2-18-191-61-174.us-east-2.compute.amazonaws.com'
         ]
 
     # Defining installed applications
@@ -55,6 +56,7 @@ class Base(Configuration):
         'localhost:2999',
         'ec2-13-58-224-148.us-east-2.compute.amazonaws.com:3000',
         'ec2-13-58-224-148.us-east-2.compute.amazonaws.com:8888',
+        'ec2-18-191-61-174.us-east-2.compute.amazonaws.com:8888',
         'localhost:8888'
     ]
 
