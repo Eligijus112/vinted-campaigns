@@ -59,4 +59,14 @@ class Users(models.Model):
 
     class Meta:
         db_table = "users"
+
+
+class UsersCampaign(models.Model):
+
+    user = models.ForeignKey(Users, on_delete=models.CASCADE) 
+    campaign_name = models.TextField(null=True, blank=True)
+    campaign_type = models.TextField(null=True, blank=True)
+
+    class Meta:
+        db_table = "users_to_campaign"
    

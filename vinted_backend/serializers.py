@@ -64,8 +64,14 @@ class UsersRegistrationSerializer(serializers.ModelSerializer):
 
 class SmartlySerializer(serializers.ModelSerializer):
     
+    agg_stats = serializers.SerializerMethodField()
+    def get_agg_stats(self, obj):
+        return obj 
+
     class Meta:
         model = SmartlyAPI
-        fields = "__all__"
+        fields = ('agg_stats', ) 
+
+        
 
 
