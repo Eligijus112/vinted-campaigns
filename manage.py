@@ -7,7 +7,7 @@ def _visual_code_docker_debug():
     try:
         import ptvsd
         if os.environ.get('RUN_MAIN'):
-            ptvsd.enable_attach(address=('0.0.0.0', 3002),
+            ptvsd.enable_attach(address=('0.0.0.0', 3003),
                                 redirect_output=True)
     except:
         pass
