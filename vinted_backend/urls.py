@@ -3,7 +3,7 @@ from django.urls import path
 
 from vinted_backend.views import UserGenderView, SmartlyAggView, UserAgeView, UserDeviceView
 from vinted_backend.views import UserRegistrationView, SmartlyGranularView, AdWordsAggView, AdWordsGranularView
-from vinted_backend.views import InstallationTotal, InstallationCampaign, UserBehaviour
+from vinted_backend.views import InstallationTotal, InstallationCampaign, UserBehaviour, UserAgeBehaviour
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('installations-campaign/', InstallationCampaign.as_view()),
 
     path('user-behaviour/', UserBehaviour.as_view()),
+    path('user-behaviour-age/', UserAgeBehaviour.as_view())
 ]

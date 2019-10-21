@@ -1,3 +1,4 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "/home/eligijus/.local/share/virtualenvs/vinted-campaigns-gUmW02u9/bin/python"
 }

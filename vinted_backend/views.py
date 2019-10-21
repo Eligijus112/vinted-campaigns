@@ -288,3 +288,55 @@ class UserBehaviour(generics.ListAPIView):
         return list_stats               
 
 
+class UserAgeBehaviour(generics.ListAPIView):
+    serializer_class = SmartlySerializer
+
+    def get_queryset(self):
+        stats = pd.read_sql_query(
+            """
+            select age_at_registration,
+            sum(first_listing_local_time) users_list, 
+            sum(first_sale_local_time) users_sale, 
+            sum(first_purchase_local_time) users_purchase,
+            count(*) total_installs
+            from
+            (select age_at_registration,
+             CASE 
+             when first_listing_local_time is null then 0
+             else 1
+             end AS first_listing_local_time,
+             CASE 
+             when first_sale_local_time is null then 0
+             else 1
+             end AS first_sale_local_time,
+             CASE 
+             when first_purchase_local_time is null then 0
+             else 1
+             end AS first_purchase_local_time
+             from users 
+            where age_at_registration is not null and age_at_registration <= 60) user_data
+            group by age_at_registration
+            order by age_at_registration desc;
+            """, connection
+        )
+
+        stats['share_users_list'] = round(stats['users_list'] * 100 / stats['total_installs'], 3)
+        stats['share_users_sale'] = round(stats['users_sale'] * 100 / stats['total_installs'], 3)
+        stats['share_users_purchase'] = round(stats['users_purchase'] * 100 / stats['total_installs'], 3)
+
+        list_stats = []
+        for _, row in stats.iterrows():
+            list_stats.append(
+                [
+                    ('age_at_registration', row['age_at_registration']),
+                    ('no_users_list', row['users_list'],),
+                    ('no_users_sale', row['users_sale']),
+                    ('no_users_purchase', row['users_purchase']),
+                    ('share_users_list', row['share_users_list']),
+                    ('share_users_sale', row['share_users_sale']),
+                    ('share_users_purchase', row['share_users_purchase']),
+                    ('total_installs', row['total_installs']),
+                ]
+            )
+
+        return list_stats               
