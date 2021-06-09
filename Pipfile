@@ -7,7 +7,7 @@ verify_ssl = true
 ptvsd = "==4.3.2"
 
 [packages]
-django = "==2.2.3"
+django = "==2.2.22"
 django-dotenv = "==1.4.2"
 django-configurations = "==2.1"
 djangorestframework = "==3.10"
